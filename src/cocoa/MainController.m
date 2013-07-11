@@ -542,9 +542,10 @@
     
     NSArray *projectSortDescriptors = 
         [NSArray arrayWithObjects:
-         [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease], 
+         [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease],
          nil];
     [tvProjects setSortDescriptors:projectSortDescriptors];
+    [tvTasks unbind:@"sortDescriptors"];
     //[projectSortDescriptors release];
 	[tvProjects reloadData];
 }
@@ -1149,6 +1150,7 @@
 }
 
 - (void)selectAndUpdateMetaTask {
+    NSLog(@"selectAndUpdateMetaTask");
 	[_metaTask setTasks:[_selProject tasks]];
 	
 	self.selectedTask = _metaTask;
